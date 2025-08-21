@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.WebView?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane fx:id="mainContainer" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
+    <top>
+        <HBox fx:id="topToolbar" spacing="10" style="-fx-background-color: #f0f0f0; -fx-padding: 10;">
+            <children>
+                <Button text="上一页" onAction="#handlePreviousPage"/>
+                <Button text="下一页" onAction="#handleNextPage"/>
+                <TextField fx:id="urlInput" promptText="输入网址..." prefWidth="300"/>
+                <Button fx:id="loadButton" text="加载" onAction="#handleLoadUrl"/>
+                <ComboBox fx:id="themeSelector" promptText="选择主题" prefWidth="120"/>
+                <Label text="字体大小:"/>
+                <Slider fx:id="fontSizeSlider" prefWidth="100" min="12" max="24" value="16"/>
+                <Button text="放大" onAction="#handleZoomIn"/>
+                <Button text="缩小" onAction="#handleZoomOut"/>
+            </children>
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+        </HBox>
+    </top>
+
+    <center>
+        <SplitPane fx:id="contentSplitPane" dividerPositions="0.5">
+            <items>
+                <WebView fx:id="leftWebView" prefWidth="600" prefHeight="700"/>
+                <WebView fx:id="rightWebView" prefWidth="600" prefHeight="700"/>
+            </items>
+        </SplitPane>
+    </center>
+
+    <bottom>
+        <HBox style="-fx-background-color: #e0e0e0; -fx-padding: 5;">
+            <Label fx:id="statusLabel" text="就绪"/>
+        </HBox>
+    </bottom>
+</BorderPane>
